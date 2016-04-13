@@ -1,0 +1,9 @@
+body {
+    min-height: 200px;
+    min-width: 150px;
+}
+
+#share-song {
+    min-height: 50px;
+    min-width: 100px;
+}
