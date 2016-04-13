@@ -1,8 +1,15 @@
-function shareSong() {
-    alert("the href is " + document.location.href);
-    console.log("The tweeted text would be: " + tweetText);
-}
-
 window.onload = function() {
-    document.getElementById("share-song").addEventListener("click", shareSong);
+    document.getElementById("share-song").addEventListener("click", function() {
+        var tabSelector = { active: true, currentWindow: true };
+        chrome.tabs.query(tabSelector, function(tabs) {
+            var request = {
+                getTitle: true,
+                getArtist: true
+            }
+            chrome.tabs.sendMessage(tabs[0].id, request, function(response) {
+                alert(response.title);
+                alert(response.artist);
+            });
+        });
+    });
 };
